@@ -2486,5 +2486,17 @@ in some window, select that window, or else display the help buffer with
     (isearch-exit)
     (helm-rg input)))
 
+(defun helm-rg--project-root ()
+  "Not documented."
+  (cl-loop for dir in '(".git/" ".hg/" ".svn/" ".git")
+           when (locate-dominating-file default-directory dir)
+           return it))
+(defun helm-rg-project-root (&optional query)
+  "Not documented, QUERY."
+  (interactive)
+  (let ((rootdir (helm-rg--project-root)))
+    (unless rootdir
+      (error "Could not find the project root.  Create a git, hg, or svn repository there first"))
+   (helm-rg query "" rootdir)))
 (provide 'helm-rg)
 ;;; helm-rg.el ends here
