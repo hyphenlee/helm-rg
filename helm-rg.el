@@ -2497,6 +2497,13 @@ in some window, select that window, or else display the help buffer with
   (let ((rootdir (helm-rg--project-root)))
     (unless rootdir
       (error "Could not find the project root.  Create a git, hg, or svn repository there first"))
-   (helm-rg query "" rootdir)))
+    (helm-rg query "" rootdir)))
+(defun helm-rg-current-dir (&optional query)
+  "Search in `default-directory' with RG.
+With WITH-TYPES, ask for file types to search in."
+  (interactive "P")
+  (helm-rg query "" default-directory ))
+
+
 (provide 'helm-rg)
 ;;; helm-rg.el ends here
