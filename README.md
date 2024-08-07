@@ -37,6 +37,11 @@ Also check out [rg.el](https://github.com/dajva/rg.el), which I haven't used muc
         - When moving by file, `helm-rg` will cycle around the results list, but it will print a harmless error message instead of looping infinitely if all results are from the same file.
 - Use the interactive autoloaded function `helm-rg-display-help` to see the ripgrep command's usage info.
 
+```elisp
+(global-set-key (kbd "C-c s") 'helm-rg-project-root)
+(global-set-key (kbd "C-c f") 'helm-rg)
+```
+
 # TODO
 
 *items checked completed here are ready to be added to the docs above*
